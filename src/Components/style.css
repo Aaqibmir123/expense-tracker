@@ -1,0 +1,28 @@
+#form{
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+#form input {
+    margin: 5px;
+}
+#form input::placeholder{
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+.btn{
+    background-color: #214ea7;
+    font-size: 20px;
+    color: white;
+}
+
+/* git init
+git add README.md
+git commit -m "first commit"
+git branch -M main */

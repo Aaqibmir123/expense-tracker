@@ -21,6 +21,9 @@
     font-size: 20px;
     color: white;
 }
+.me-auto.navbar-nav a {
+    padding: 13px 76px;
+}
 
 /* git init
 git add README.md

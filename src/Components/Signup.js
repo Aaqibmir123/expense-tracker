@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { useState } from 'react';
+import { Login } from './Login';
 import './style.css';
 const Signup = () => {
   
@@ -77,7 +78,7 @@ const Signup = () => {
                {!isLoading &&  <button className='btn'>Signup</button>}
                {isLoading && <p>isLoading ....</p>}
             </form>
-
+            <Login />
         </>
     )
 }

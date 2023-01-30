@@ -1,8 +1,10 @@
 import React, { useContext, useRef } from 'react'
+import {  useNavigate } from 'react-router';
 import { Authcontent } from './store/Authcontext';
 
 import './style.css';
 export const Login = () => {
+   const  navigation = useNavigate();
     
     const ctx=useContext(Authcontent);
     const inputEmailref = useRef();
@@ -25,6 +27,8 @@ export const Login = () => {
             }
         }).then(res=>{
             if(res.ok){
+                navigation('/welcome');
+                
                 return res.json();
             }
             else{
@@ -35,7 +39,7 @@ export const Login = () => {
                 });
             }
         }).then((data)=>{
-            console.log(data);
+            console.log(data.idToken);
             ctx.login(data.idToken);
             
           

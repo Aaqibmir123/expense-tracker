@@ -27,6 +27,11 @@ export const Navbars = () => {
          welcome
          </Link>
        )}
+      {logined && (
+        <Link to='/login'>
+        logout
+        </Link>
+      )}
         
       </Nav>
     </Container>

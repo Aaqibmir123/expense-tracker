@@ -6,6 +6,7 @@ import Signup from './Components/Signup';
 import {Routes,Route } from 'react-router-dom';
 import { Welcome } from './Components/Welcome';
 import { Completeprofile } from './Components/Completeprofile';
+import Logout from './Components/Logout';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login/>} />
           <Route path='/welcome' element={<Welcome/>} />
+          <Route path='/logout' element ={<Logout />} />
         
       </Routes>
    

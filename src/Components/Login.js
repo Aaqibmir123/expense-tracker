@@ -1,12 +1,20 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef,useState } from 'react'
 import {  useNavigate } from 'react-router';
 import { Authcontent } from './store/Authcontext';
 
 import './style.css';
 export const Login = () => {
    const  navigation = useNavigate();
-    
     const ctx=useContext(Authcontent);
+
+    const [email, SetEmail] = useState();
+
+    const updateEmail = (e) => {
+        SetEmail(e.target.value);
+       
+
+    }
+  
     const inputEmailref = useRef();
     const inputpasswordref = useRef();
 
@@ -28,7 +36,6 @@ export const Login = () => {
         }).then(res=>{
             if(res.ok){
                 navigation('/welcome');
-                
                 return res.json();
             }
             else{
@@ -39,11 +46,9 @@ export const Login = () => {
                 });
             }
         }).then((data)=>{
-            console.log(data.idToken);
+            console.log("email", data.email)
             ctx.login(data.idToken);
-            
-          
-
+            localStorage.setItem('email',email);
         }).catch((err)=>{
             alert(err.message);
         })
@@ -55,7 +60,8 @@ export const Login = () => {
         <>
             <form id='form' onSubmit={submithandler}>
                 <h2>Login</h2>
-                <input type='email' placeholder='email' ref={inputEmailref} />
+                <input type='email' placeholder='email' ref={inputEmailref}
+                onChange={updateEmail} />
                 <input type='password' placeholder='password' ref={inputpasswordref} />
                 <button className='btn'>Login</button>
             </form>

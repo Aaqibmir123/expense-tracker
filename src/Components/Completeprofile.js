@@ -4,7 +4,9 @@ import { Authcontent } from './store/Authcontext';
 export const Completeprofile = () => {
 
     const inputText = useRef();
+
     const inputFile = useRef();
+
     const ctx = useContext(Authcontent);
 
     const token = ctx.token;
@@ -15,7 +17,7 @@ export const Completeprofile = () => {
     },[]);
 
 
-    
+
    const getuserdata=()=>{
     fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAgs87SFNNhZ1bqnMLpJbkcggMhWmDsZ1w',{
         method:'POST',

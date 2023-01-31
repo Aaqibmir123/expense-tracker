@@ -26,7 +26,7 @@ export const Login = () => {
             method:'POST',
             body:JSON.stringify({
                 requestType:"PASSWORD_RESET",
-                email:"miraaqib514@gmail.com"
+                email:localStorage.getItem('email')
             }),
             headers:{
                 "Content-Type" :"application/json"
@@ -67,7 +67,7 @@ export const Login = () => {
             }
         }).then((data)=>{
             console.log("email", data.email)
-            ctx.login(data.idToken);
+            ctx.login(data.idToken,data.email);
             localStorage.setItem('email',email);
         }).catch((err)=>{
             alert(err.message);

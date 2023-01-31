@@ -28,10 +28,12 @@ export const Authcontextprovider = (props) => {
     }
 
     const logoutHandler = () => {
-        settoken(null);
-        setemail(null);
         localStorage.removeItem('token');
         localStorage.removeItem('email');
+        // settoken(null);
+        // setemail(null);
+        console.log('logout handler')
+       
     }
 
     const contextvalue = {
@@ -39,9 +41,7 @@ export const Authcontextprovider = (props) => {
         islogined: userislogined,
         login: loginhandler,
         logout: logoutHandler,
-      
-
-
+    
     }
 
 

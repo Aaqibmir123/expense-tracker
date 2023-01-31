@@ -1,6 +1,7 @@
 
 import { useContext } from 'react';
 import { useNavigate } from 'react-router';
+import { Addexpenses } from './Addexpenses';
 import { Authcontent } from './store/Authcontext';
 
 export const Welcome = () => {
@@ -33,6 +34,7 @@ export const Welcome = () => {
                 <p>Your profile is incomplete</p>
                 <button onClick={profileHandler}>Complete your profile</button>
                 <button onClick={emailVerfication}>Verify email</button>
+                <Addexpenses />
             </div>
         )
     }

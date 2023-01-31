@@ -9,7 +9,7 @@ export const Addexpenses = () => {
 
 
   const submithandler = (e) => {
-    e.preventDefault();
+    e.preventDefault();  
     const EnterdMoneyValue = Addmoneryref.current.value;
     const EnterDescfvalue = Adddescref.current.value;
     const EnteredCatagoryvalue = addcatagoerref.current.value;

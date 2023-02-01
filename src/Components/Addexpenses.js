@@ -67,7 +67,7 @@ export const Addexpenses = () => {
 
     const newData = [];
     for (let key in data) {
-      newData.push({id:key, ...data})
+      newData.push({id:key, ...data[key]})
     }
     Authctx.addItems(newData);
 

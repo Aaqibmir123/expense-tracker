@@ -10,11 +10,13 @@ import { Authcontextproviders } from './Components/store/Expensescontext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-   <Authcontextproviders>
+   
    <Authcontextprovider>
+   <Authcontextproviders>
       <App />
+      </Authcontextproviders>
     </Authcontextprovider>
-   </Authcontextproviders>
+  
 
 
   </BrowserRouter>

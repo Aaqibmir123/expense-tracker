@@ -12,6 +12,8 @@ export const Userdata = () => {
             return (
                 <li key={Math.random()}>
                     {items[0].EnteredCatagoryvalue}
+                    {items[0].EnterDescfvalue}
+                    {items[0].EnterdMoneyValue}
                 </li>
             )
         })}

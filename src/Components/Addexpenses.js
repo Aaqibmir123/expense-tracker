@@ -54,9 +54,6 @@ export const Addexpenses = () => {
 
   async function GetUserData(e) {
 
-    // const itemList = [];
-
-
     e.preventDefault();
     const Response = await axios.get('https://expense-tracker-f1216-default-rtdb.firebaseio.com/expenses.json');
     const data = await Response.data;
@@ -74,16 +71,11 @@ export const Addexpenses = () => {
     }
     Authctx.addItems(newData);
 
-
-
-
     //}
 
     // console.log(Authctx.addItems());
 
   }
-
-
 
   return (
     <div>

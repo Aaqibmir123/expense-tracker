@@ -8,11 +8,8 @@ export const Login = () => {
     const ctx=useContext(Authcontent);
 
     const [email, SetEmail] = useState();
-
     const updateEmail = (e) => {
         SetEmail(e.target.value);
-       
-
     }
   
     const inputEmailref = useRef();

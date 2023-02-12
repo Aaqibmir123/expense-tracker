@@ -22,7 +22,7 @@ export const Navbars = () => {
         <Link to='/login'>
         Login
         </Link>
-       {logined && (
+       {logined &&  (
          <Link to='/welcome'>
          welcome
          </Link>
@@ -41,3 +41,4 @@ export const Navbars = () => {
    </>
   )
 }
+

@@ -1,84 +1,59 @@
 import React, { useContext, useEffect, useRef } from 'react'
-import { Authcontent } from './store/Authcontext';
+import { Await } from 'react-router';
+import { Expensescontext } from './store/Expensescontext';
 
 export const Completeprofile = () => {
     const inputText = useRef();
     const inputFile = useRef();
-    const ctx = useContext(Authcontent);
-    const token = ctx.token;
-    console.log(ctx.token);
-    useEffect(() => {
-        getuserdata();
-    }, []);
+    const ctx = useContext(Expensescontext);
+    const tokens = localStorage.getItem('token');
 
-    const getuserdata = () => {
-        fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAgs87SFNNhZ1bqnMLpJbkcggMhWmDsZ1w', {
-            method: 'POST',
+    const getuserData = async () => {
+        const requestOptions = {
+            method: "POST",
             body: JSON.stringify({
-                idToken: token
+                idToken: tokens
             }),
             headers: {
                 'Content-Type': 'application/json'
-            }
-        }).then((res) => {
-            return res.json();
-        }).then((data) => {
-            inputText.current.value = data.users[0].displayName;
-            inputFile.current.value = data.users[0].photoUrl;
-            console.log(data.users[0].displayName, data.users[0].photoUrl)
-        })
+            },
+
+        };
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAgs87SFNNhZ1bqnMLpJbkcggMhWmDsZ1w`, requestOptions);
+        const data = await response.json();
+        console.log(data);
+        inputText.current.value = data.users[0].displayName;
+        inputFile.current.value = data.users[0].photoUrl;
+
     }
+    getuserData();
 
 
-    const UpdateProfile = () => {
+
+    const updateData = async () => {
         const enterName = inputText.current.value;
         const enterFile = inputFile.current.value;
-
-        console.log(ctx.token);
-        const token = ctx.token;
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAgs87SFNNhZ1bqnMLpJbkcggMhWmDsZ1w';
-        fetch(url, {
+        const requestOptions = {
             method: 'POST',
             body: JSON.stringify({
-                idToken: token,
+                idToken: tokens,
                 displayName: enterName,
                 photoUrl: enterFile,
-                returnSecureToken: true
             }),
             headers: {
-                "Content-Type": 'application/json'
-            }
-        }).then((res) => {
-            if (res.ok) {
-                fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAgs87SFNNhZ1bqnMLpJbkcggMhWmDsZ1w', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        idToken: token,
-                        displayName: enterName,
-                        photoUrl: enterFile
-                    }),
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                }).then(res => {
-                    console.log(res);
-                })
-                return res.json();
+                'Content-Type': 'application.json'
+            },
+        };
 
-            }
-            // else {
-            //     return res.json().then(() => {
-            //         let errorMessage = "failed";
-            //         throw new Error(errorMessage);
-            //     })
-            // };
-        }).then((data) => {
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAgs87SFNNhZ1bqnMLpJbkcggMhWmDsZ1w`, requestOptions);
+        const data = await response.json();
+        if (response.ok) {
             console.log(data);
-
-
-        }).catch((err) => {
-            alert(err.message);
-        })
+            ctx.updatedDatas(data.users);
+        }
+        else {
+            throw new Error("something went wrong");
+        }
     }
 
     return (
@@ -86,7 +61,7 @@ export const Completeprofile = () => {
 
             <input type='text' name='name' ref={inputText} />
             <input type='email' name='file' ref={inputFile} />
-            <button onClick={UpdateProfile}>update</button>
+            <button onClick={updateData}>update</button>
 
 
         </div>

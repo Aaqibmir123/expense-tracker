@@ -13,10 +13,7 @@ export const Authcontent = React.createContext({
 
 export const Authcontextprovider = (props) => {
     const [token, settoken] = useState(null);
-    const [email,setemail] = useState('');
-
-
-
+    const [email, setemail] = useState('');
     const userislogined = !!token;
 
     const loginhandler = (token) => {
@@ -26,25 +23,21 @@ export const Authcontextprovider = (props) => {
         localStorage.setItem('email', email);
 
     }
-
     const logoutHandler = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
         // settoken(null);
         // setemail(null);
         console.log('logout handler')
-       
-    }
 
+    }
     const contextvalue = {
         token: token,
         islogined: userislogined,
         login: loginhandler,
         logout: logoutHandler,
-    
+
     }
-
-
 
     return (
         <Authcontent.Provider value={contextvalue}>

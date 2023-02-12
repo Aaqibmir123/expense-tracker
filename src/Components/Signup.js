@@ -42,7 +42,9 @@ const Signup = () => {
             }).then(res => {
                 setloading(false);
                 if (res.ok) {
-                    //...
+                    alert("stored succwssfully");
+                    setloading(false);
+                    
                 }
                 else {
                     return res.json().then(data => {

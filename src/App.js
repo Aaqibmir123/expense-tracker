@@ -7,24 +7,21 @@ import {Routes,Route } from 'react-router-dom';
 import { Welcome } from './Components/Welcome';
 import { Completeprofile } from './Components/Completeprofile';
 import Logout from './Components/Logout';
-
 function App() {
+
+  //https://egghead.io/lessons/react-understand-the-react-hook-flow
+ 
   return (
-    <div className="App">
-    
+    <div className="App">    
     <Navbars />
       <Routes>
-        
-          {/* <Route path="/" element={<Navbars/>} /> */}
+      <Route path="/" element={<Signup/>} />
           <Route path='/profile' element = {<Completeprofile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login/>} />
           <Route path='/welcome' element={<Welcome/>} />
           <Route path='/logout' element ={<Logout />} />
-        
       </Routes>
-   
-     
     </div>
   );
 }
